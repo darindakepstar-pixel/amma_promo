@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amma Flowers</title>
+<meta name="description" content="Amma Flowers — прямые поставки срезанных цветов из Куньмина в Россию и СНГ. Каталог, прайс, партнёры и контакты в одном месте.">
+<meta name="theme-color" content="#0e1526">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="assets/logo-amma.png">
+<link rel="apple-touch-icon" href="assets/logo-amma.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="app-header" id="appHeader">
+    <img src="assets/logo-amma.png" alt="Amma Flowers">
+    <div class="pills">
+      <div class="pill" data-lang="ru">RU</div>
+      <div class="pill" data-lang="en">EN</div>
+      <div class="pill" data-lang="cn">中文</div>
+    </div>
+  </header>
+
+  <main class="feed scr" id="feed">
+
+    <div class="hero">
+      <img src="assets/truck-hero.jpg" alt="Amma Flowers">
+      <div class="hero-copy">
+        <div class="kicker" data-i18n="kicker"></div>
+        <div class="hero-title" data-i18n="hero"></div>
+        <div class="hero-sub" data-i18n="heroSub"></div>
+      </div>
+    </div>
+
+    <nav class="nav-chips scr" id="navChips">
+      <div class="nav-chip" data-jump="about" data-i18n="navAbout"></div>
+      <div class="nav-chip" data-jump="catalog" data-i18n="navCatalog"></div>
+      <div class="nav-chip" data-jump="price" data-i18n="navPrice"></div>
+      <div class="nav-chip" data-jump="partners" data-i18n="navPartners"></div>
+      <div class="nav-chip" data-jump="log" data-i18n="navLog"></div>
+      <div class="nav-chip" data-jump="contact" data-i18n="navContact"></div>
+    </nav>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-num"><span>2500 m²&nbsp;</span></div><div class="stat-label" data-i18n="stat1"></div></div>
+      <div class="stat"><div class="stat-num">1000+</div><div class="stat-label" data-i18n="stat2"></div></div>
+      <div class="stat"><div class="stat-num">7–10</div><div class="stat-label" data-i18n="stat3"></div></div>
+    </div>
+
+    <section class="section" id="sec-about">
+      <div class="section-kicker" data-i18n="navAbout"></div>
+      <div class="section-title" data-i18n="aboutTitle"></div>
+      <div class="about-body" data-i18n="aboutBody"></div>
+      <div class="about-org">Kunming Amma Flowers Co., Ltd · 昆明阿妈花卉有限公司</div>
+    </section>
+
+    <div class="features">
+      <div class="feature"><div class="feature-num">01</div><div><div class="feature-title" data-i18n="f1t"></div><div class="feature-desc" data-i18n="f1d"></div></div></div>
+      <div class="feature"><div class="feature-num">02</div><div><div class="feature-title" data-i18n="f2t"></div><div class="feature-desc" data-i18n="f2d"></div></div></div>
+      <div class="feature"><div class="feature-num">03</div><div><div class="feature-title" data-i18n="f3t"></div><div class="feature-desc" data-i18n="f3d"></div></div></div>
+    </div>
+
+    <div class="video-head">
+      <div class="section-kicker" data-i18n="videoKicker"></div>
+      <div class="section-title" data-i18n="videoTitle"></div>
+    </div>
+    <div class="video-row scr">
+      <div class="video-item">
+        <video src="assets/video-plantation.mp4" muted loop playsinline controls preload="metadata" poster="assets/roses-pink.jpg"></video>
+        <div class="video-item-label" data-i18n="video1"></div>
+      </div>
+      <div class="video-item">
+        <video src="assets/video-warehouse.mp4" muted loop playsinline controls preload="metadata" poster="assets/truck-fleet.jpg"></video>
+        <div class="video-item-label" data-i18n="video2"></div>
+      </div>
+    </div>
+
+    <section class="catalog-head" id="sec-catalog">
+      <div class="section-kicker" data-i18n="navCatalog"></div>
+      <div class="section-title" data-i18n="catalogTitle"></div>
+      <div class="tabs">
+        <div class="tab" data-cat="cut" data-i18n="catCut"></div>
+        <div class="tab" data-cat="pot" data-i18n="catPot"></div>
+        <div class="tab" data-cat="sup" data-i18n="catSup"></div>
+      </div>
+    </section>
+    <div id="catalogBody"></div>
+
+    <section class="price-card" id="sec-price">
+      <div class="price-card-head">
+        <div class="price-card-title" data-i18n="navPrice"></div>
+        <div class="week-badge" id="weekBadge"></div>
+      </div>
+      <div class="price-terms" data-i18n="priceTerms"></div>
+      <div class="price-cta-row">
+        <img class="price-qr" src="assets/qr-price.png" alt="QR">
+        <div class="price-dl" id="priceDlBtn">
+          <div class="price-dl-title" data-i18n="priceCta"></div>
+          <div class="price-dl-sub">PDF · A4</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sec-partners">
+      <div class="section-kicker" data-i18n="navPartners"></div>
+      <div class="section-title" data-i18n="partnersTitle"></div>
+    </section>
+    <div class="partners-list">
+      <div class="partner-card">
+        <div class="partner-photos">
+          <div class="partner-photos-grid">
+            <img src="assets/atena-greenhouse.png" alt="Атэна — теплица">
+            <img src="assets/atena-field.jpg" alt="Атэна — поле">
+          </div>
+          <div class="partner-logo-badge"><img src="assets/logo-atena.png" alt="Атэна"></div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-kicker" data-i18n="p1kicker"></div>
+          <div class="partner-title" data-i18n="p1title"></div>
+          <div class="partner-desc" data-i18n="p1body"></div>
+        </div>
+      </div>
+      <div class="partner-card">
+        <img class="partner-single-photo" src="assets/terminal-m9.png" alt="Терминал М9">
+        <div class="partner-body">
+          <div class="partner-kicker" data-i18n="p2kicker"></div>
+          <div class="partner-title" data-i18n="p2title"></div>
+          <div class="partner-desc" data-i18n="p2body"></div>
+          <div class="partner-feats">
+            <div class="partner-feat" data-i18n="p2f1"></div>
+            <div class="partner-feat" data-i18n="p2f2"></div>
+            <div class="partner-feat" data-i18n="p2f3"></div>
+          </div>
+          <div class="partner-site">tltm9.ru</div>
+        </div>
+      </div>
+      <div class="clients-card">
+        <div class="clients-kicker" data-i18n="clientsKicker"></div>
+        <div class="clients-title" data-i18n="clientsTitle"></div>
+        <div class="clients-chips">
+          <div class="clients-chip" data-i18n="client1"></div>
+          <div class="clients-chip" data-i18n="client2"></div>
+          <div class="clients-chip" data-i18n="client3"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="log-head" id="sec-log">
+      <div class="section-kicker" data-i18n="navLog"></div>
+      <div class="section-title" data-i18n="logTitle"></div>
+    </section>
+    <div class="log-body">
+      <div class="route-line">
+        <span data-i18n="route1"></span><span class="route-sep"></span>
+        <span data-i18n="route2"></span><span class="route-sep"></span>
+        <span class="route-dest" data-i18n="route3"></span>
+      </div>
+      <div class="cities">
+        <div class="city-row"><span class="city-name" data-i18n="city1"></span><span class="city-days" data-i18n="city1v"></span></div>
+        <div class="city-row"><span class="city-name" data-i18n="city2"></span><span class="city-days">5–7</span></div>
+        <div class="city-row"><span class="city-name" data-i18n="city3"></span><span class="city-days">6–9</span></div>
+      </div>
+      <div class="log-footer">
+        <img src="assets/logo-amma.png" alt="Amma Flowers">
+        <div>
+          <div class="log-footer-title">GLOBAL FLOWER SUPPLY</div>
+          <div class="log-footer-sub">Connecting China &amp; Russia</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="sec-contact">
+      <div class="section-kicker" data-i18n="navContact"></div>
+      <div class="section-title" data-i18n="contactTitle"></div>
+      <div class="contact-sub" data-i18n="contactSub"></div>
+    </section>
+    <div class="contact-actions">
+      <div class="contact-row filled" id="waBtn"><span class="contact-row-label">WhatsApp</span><span class="contact-row-value">+7 977 166-77-88</span></div>
+      <div class="contact-row outline" id="tgBtn"><span class="contact-row-label">Telegram</span><span class="contact-row-value">@Amma_Flowers</span></div>
+      <div class="contact-row outline" id="vcardBtn"><span class="contact-row-label" data-i18n="vcard"></span><span class="contact-row-value accent">.vcf ↓</span></div>
+      <div class="contact-foot">ammaflowers.cn</div>
+    </div>
+
+  </main>
+
+  <div class="sheet-overlay" id="sheetOverlay">
+    <div class="sheet-card" id="sheetCard">
+      <div class="sheet-close" id="sheetClose">×</div>
+      <div class="sheet-top">
+        <div class="sheet-thumb" id="sheetThumb"></div>
+        <div class="sheet-head-text">
+          <div class="sheet-badge" id="sheetBadge"></div>
+          <div class="sheet-name" id="sheetName"></div>
+        </div>
+      </div>
+      <div class="sheet-body">
+        <div class="sheet-sub" id="sheetSub"></div>
+        <div class="sheet-price" id="sheetPrice"></div>
+        <div class="sheet-stats">
+          <div class="sheet-stat"><div class="sheet-stat-label" id="sheetGradeApLabel"></div><div class="sheet-stat-val" id="sheetGradeAp"></div></div>
+          <div class="sheet-stat"><div class="sheet-stat-label" id="sheetBoxLabel"></div><div class="sheet-stat-val" id="sheetBoxA"></div></div>
+        </div>
+        <div class="sheet-pack" id="sheetPack"></div>
+        <div class="sheet-cta" id="sheetCta"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bar-btn filled" id="barPriceBtn" data-i18n="barPrice"></div>
+    <div class="bar-btn outline" id="barWriteBtn" data-i18n="barWrite"></div>
+  </div>
+
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
