@@ -1,0 +1,34 @@
+name: Sync Telegram feed
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # every day at 06:00 UTC
+  workflow_dispatch: {}    # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest Telegram posts
+        run: node scripts/fetch-telegram.mjs
+
+      - name: Commit changes if the feed changed
+        run: |
+          git config user.name "telegram-sync-bot"
+          git config user.email "actions@github.com"
+          git add telegram-feed.json
+          if git diff --cached --quiet; then
+            echo "No changes in the feed"
+          else
+            git commit -m "Update Telegram feed"
+            git push
+          fi
