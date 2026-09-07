@@ -14,10 +14,12 @@ const T = {
     f3t: 'Саженцы · срез · горшечные', f3d: 'Три направления поставки в одном контракте',
     videoKicker: 'Видео', videoTitle: 'Как это выглядит у нас',
     video1: 'Плантация и срезка', video2: 'Склад и погрузка',
+    galleryKicker: 'Фотографии', galleryTitle: 'Мы в деле',
     catalogTitle: 'Ассортимент недели',
     catCut: 'Срезы', catPot: 'Горшечные', catSup: 'Сопутка',
     priceTerms: 'От 8 коробов / 80 000 ₽ · от 1 короба +10 % · отгрузка 3–5 дней после подтверждения.',
-    priceCta: 'Скачать полный прайс',
+    priceCta: 'Скачать прайс',
+    priceShortNote: 'Это сокращённый прайс.', priceManagerLink: 'Полный прайс — напишите менеджеру',
     partnersTitle: 'Наши партнёры',
     p1kicker: 'Партнёр · выращивание, Оренбург', p1title: 'Тепличное хозяйство «Атэна»', p1body: 'Собственные луковицы, 3 га теплиц и полный цикл выращивания. Сильный российский производитель, с которым мы работаем в паре.',
     p2kicker: 'Партнёр · таможня и ВЭД', p2title: 'Таможенно-логистический терминал М9', p2body: 'Крупный терминал у границы с Европой, 700 м от МАПП «Бурачки»: СВХ и таможенный склад, ФТС, Россельхознадзор и аккредитованная лаборатория на одной площадке. Комплексный оператор ВЭД с представительствами в ЕС и Китае.',
@@ -34,7 +36,8 @@ const T = {
     barPrice: 'Прайс PDF', barWrite: 'Написать',
     sheetCta: 'Запросить по этой позиции',
     waGeneric: 'Здравствуйте! Хочу узнать про поставки Amma Flowers.',
-    waItem: (name) => `Здравствуйте! Интересует позиция: ${name}`
+    waItem: (name) => `Здравствуйте! Интересует позиция: ${name}`,
+    waFullPrice: 'Здравствуйте! Пришлите, пожалуйста, полный прайс.'
   },
   en: {
     kicker: 'Bloom & Care · wholesale & import',
@@ -49,10 +52,12 @@ const T = {
     f3t: 'Seedlings · cut flowers · pot plants', f3d: 'Three supply lines in one contract',
     videoKicker: 'Video', videoTitle: 'See it for yourself',
     video1: 'Plantation & cutting', video2: 'Warehouse & loading',
+    galleryKicker: 'Photos', galleryTitle: 'Behind the scenes',
     catalogTitle: 'This week’s range',
     catCut: 'Cut', catPot: 'Potted', catSup: 'Supplies',
     priceTerms: 'From 8 boxes / RUB 80,000 · +10 % for single boxes · dispatch 3–5 days after confirmation.',
-    priceCta: 'Download full price list',
+    priceCta: 'Download price list',
+    priceShortNote: 'This is an abbreviated price list.', priceManagerLink: 'For the full price list, message our manager',
     partnersTitle: 'Our partners',
     p1kicker: 'Partner · growing, Orenburg', p1title: 'Atena Green House', p1body: 'Own bulbs, 3 ha of greenhouses and a full growing cycle. A strong Russian grower we work alongside.',
     p2kicker: 'Partner · customs & foreign trade', p2title: 'M9 Customs & Logistics Hub', p2body: 'A major terminal on the European border, 700 m from the Burachki crossing: bonded and customs warehouses, federal customs, phytosanitary service and an accredited lab on one site. A full-service foreign-trade operator with offices across the EU and China.',
@@ -69,7 +74,8 @@ const T = {
     barPrice: 'Price PDF', barWrite: 'Message us',
     sheetCta: 'Request this item',
     waGeneric: 'Hello! I would like to know more about Amma Flowers supply.',
-    waItem: (name) => `Hello! I'm interested in: ${name}`
+    waItem: (name) => `Hello! I'm interested in: ${name}`,
+    waFullPrice: 'Hello! Could you send me the full price list, please?'
   },
   cn: {
     kicker: 'Bloom & Care · 批发与进口',
@@ -84,10 +90,12 @@ const T = {
     f3t: '种苗 · 鲜切花 · 盆栽', f3d: '一份合同覆盖三条供应线',
     videoKicker: '视频', videoTitle: '现场实拍',
     video1: '基地与采收', video2: '仓库与装车',
+    galleryKicker: '照片', galleryTitle: '工作实况',
     catalogTitle: '本周供应',
     catCut: '鲜切花', catPot: '盆栽', catSup: '辅料',
     priceTerms: '起订 8 箱 / 80,000 卢布 · 单箱加价 10% · 确认后 3–5 天发货。',
-    priceCta: '下载完整价格表',
+    priceCta: '下载价格表',
+    priceShortNote: '这是简化版价格表。', priceManagerLink: '完整价格表请联系经理',
     partnersTitle: '合作伙伴',
     p1kicker: '伙伴 · 种植（奥伦堡）', p1title: 'Atena 温室农场', p1body: '自有种球、3 公顷温室、全周期种植。我们并肩合作的俄罗斯优质种植商。',
     p2kicker: '伙伴 · 清关与外贸', p2title: 'M9 报关物流枢纽', p2body: '欧洲边境的大型口岸，距 Burachki 通关口 700 米：保税仓与海关仓、海关、植检机构及认证实验室集于一地。并在欧盟与中国设有机构的综合外贸服务商。',
@@ -104,13 +112,22 @@ const T = {
     barPrice: '价格 PDF', barWrite: '联系我们',
     sheetCta: '就此品种询价',
     waGeneric: '您好！我想了解 Amma Flowers 的供货情况。',
-    waItem: (name) => `您好！我对这个品种感兴趣：${name}`
+    waItem: (name) => `您好！我对这个品种感兴趣：${name}`,
+    waFullPrice: '您好！请发送完整价格表给我，谢谢。'
   }
 };
 
 const WA_PHONE = '79771667788';
 const TG_HANDLE = 'Amma_Flowers';
 const PRICE_PDF = 'assets/amma-price.pdf';
+
+// Add more photos any time: just drop the file into assets/gallery/ and add its name here.
+const GALLERY_IMAGES = [
+  'assets/gallery/team-office.jpg',
+  'assets/gallery/expo-interview.jpg',
+  'assets/gallery/peonies-vase.jpg',
+  'assets/gallery/peonies-crates.jpg'
+];
 
 const state = { lang: 'ru', catC: 'cut', group: 0, q: '', item: null };
 
@@ -280,7 +297,7 @@ function closeSheet() {
 
 function openWhatsApp(itemName) {
   const tt = t();
-  const text = itemName ? tt.waItem(itemName) : tt.waGeneric;
+  const text = itemName === 'fullPrice' ? tt.waFullPrice : (itemName ? tt.waItem(itemName) : tt.waGeneric);
   window.open(`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
 }
 function openTelegram() {
@@ -319,6 +336,7 @@ function wireStaticEvents() {
     renderCatalogBody();
   }));
   $('priceDlBtn').addEventListener('click', downloadPrice);
+  $('priceManagerLink').addEventListener('click', () => openWhatsApp('fullPrice'));
   $('barPriceBtn').addEventListener('click', downloadPrice);
   $('barWriteBtn').addEventListener('click', () => openWhatsApp());
   $('waBtn').addEventListener('click', () => openWhatsApp());
@@ -326,9 +344,43 @@ function wireStaticEvents() {
   $('vcardBtn').addEventListener('click', saveVcard);
   $('sheetClose').addEventListener('click', closeSheet);
   $('sheetOverlay').addEventListener('click', (e) => { if (e.target === $('sheetOverlay')) closeSheet(); });
+  $('lightboxClose').addEventListener('click', closeLightbox);
+  $('lightboxOverlay').addEventListener('click', (e) => { if (e.target === $('lightboxOverlay')) closeLightbox(); });
   window.addEventListener('resize', updateHeaderHeight);
+}
+
+function openLightbox(src) {
+  $('lightboxImg').src = src;
+  $('lightboxOverlay').classList.add('open');
+}
+function closeLightbox() {
+  $('lightboxOverlay').classList.remove('open');
+  $('lightboxImg').src = '';
+}
+
+function initGallery() {
+  if (!GALLERY_IMAGES.length) return;
+  const track = $('galleryTrack');
+  // duplicate the list once so translateX(-50%) loops seamlessly
+  const doubled = GALLERY_IMAGES.concat(GALLERY_IMAGES);
+  doubled.forEach((src) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.addEventListener('click', () => openLightbox(src));
+    track.appendChild(img);
+  });
+  track.style.setProperty('--gallery-duration', Math.max(20, GALLERY_IMAGES.length * 6) + 's');
+  const pause = () => track.classList.add('paused');
+  const resume = () => track.classList.remove('paused');
+  track.addEventListener('mouseenter', pause);
+  track.addEventListener('mouseleave', resume);
+  track.addEventListener('touchstart', pause, { passive: true });
+  track.addEventListener('touchend', resume);
 }
 
 wireStaticEvents();
 updateHeaderHeight();
+initGallery();
 render();
