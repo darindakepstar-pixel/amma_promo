@@ -13,11 +13,12 @@ const T = {
     f2t: 'Холодовая цепь без разрывов', f2d: 'Рефрижераторный транспорт до склада получателя',
     f3t: 'Саженцы · срез · горшечные', f3d: 'Три направления поставки в одном контракте',
     videoKicker: 'Видео', videoTitle: 'Как это выглядит у нас',
-    video1: 'Рабочие будни', video2: 'Плантации срезов',
+    video1: 'Рабочие будни', video2: 'Цветочные плантации',
     galleryKicker: 'Фотографии', galleryTitle: 'Мы в деле',
+    gallerySubLink: 'Больше фото и видео — в нашем Telegram-канале →',
     catalogTitle: 'Ассортимент недели',
     catCut: 'Срезы', catPot: 'Горшечные', catSup: 'Сопутка',
-    priceTerms: 'Заказ от 1 паллеты · логистика "под ключ" 150 000 ₽ · отгрузка 3–5 дней после подтверждения.',
+    priceTerms: 'От 8 коробов / 80 000 ₽ · от 1 короба +10 % · отгрузка 3–5 дней после подтверждения.',
     priceCta: 'Скачать прайс',
     priceShortNote: 'Это сокращённый прайс.', priceManagerLink: 'Полный прайс — напишите менеджеру',
     partnersTitle: 'Наши партнёры',
@@ -53,6 +54,7 @@ const T = {
     videoKicker: 'Video', videoTitle: 'See it for yourself',
     video1: 'Plantation & cutting', video2: 'Warehouse & loading',
     galleryKicker: 'Photos', galleryTitle: 'Behind the scenes',
+    gallerySubLink: 'More photos & videos in our Telegram channel →',
     catalogTitle: 'This week’s range',
     catCut: 'Cut', catPot: 'Potted', catSup: 'Supplies',
     priceTerms: 'From 8 boxes / RUB 80,000 · +10 % for single boxes · dispatch 3–5 days after confirmation.',
@@ -91,6 +93,7 @@ const T = {
     videoKicker: '视频', videoTitle: '现场实拍',
     video1: '基地与采收', video2: '仓库与装车',
     galleryKicker: '照片', galleryTitle: '工作实况',
+    gallerySubLink: '更多照片和视频 —— 关注我们的 Telegram 频道 →',
     catalogTitle: '本周供应',
     catCut: '鲜切花', catPot: '盆栽', catSup: '辅料',
     priceTerms: '起订 8 箱 / 80,000 卢布 · 单箱加价 10% · 确认后 3–5 天发货。',
@@ -121,13 +124,8 @@ const WA_PHONE = '79771667788';
 const TG_HANDLE = 'Amma_Flowers';
 const PRICE_PDF = 'assets/amma-price.pdf';
 
-// Add more photos any time: just drop the file into assets/gallery/ and add its name here.
-const GALLERY_IMAGES = [
-  'assets/gallery/team-office.jpg',
-  'assets/gallery/expo-interview.jpg',
-  'assets/gallery/peonies-vase.jpg',
-  'assets/gallery/peonies-crates.jpg'
-];
+// Populated automatically by .github/workflows/telegram-sync.yml — no manual uploads needed.
+const TELEGRAM_FEED_URL = './telegram-feed.json';
 
 const state = { lang: 'ru', catC: 'cut', group: 0, q: '', item: null };
 
@@ -349,29 +347,63 @@ function wireStaticEvents() {
   window.addEventListener('resize', updateHeaderHeight);
 }
 
-function openLightbox(src) {
-  $('lightboxImg').src = src;
+function openLightbox(src, type) {
+  const img = $('lightboxImg'), vid = $('lightboxVideo');
+  if (type === 'video') {
+    vid.src = src;
+    vid.style.display = 'block';
+    img.style.display = 'none';
+    vid.play().catch(() => {});
+  } else {
+    img.src = src;
+    img.style.display = 'block';
+    vid.style.display = 'none';
+  }
   $('lightboxOverlay').classList.add('open');
 }
 function closeLightbox() {
   $('lightboxOverlay').classList.remove('open');
-  $('lightboxImg').src = '';
+  const img = $('lightboxImg'), vid = $('lightboxVideo');
+  img.src = ''; img.style.display = 'none';
+  vid.pause(); vid.src = ''; vid.style.display = 'none';
 }
 
-function initGallery() {
-  if (!GALLERY_IMAGES.length) return;
+function hideGallery() {
+  $('galleryHead').style.display = 'none';
+  $('galleryWrap').style.display = 'none';
+  $('gallerySub').style.display = 'none';
+}
+
+async function initGallery() {
+  let posts = [];
+  try {
+    const res = await fetch(TELEGRAM_FEED_URL, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      posts = Array.isArray(data.posts) ? data.posts.filter((p) => p && p.media) : [];
+    }
+  } catch (e) {
+    // feed not available yet (e.g. the sync workflow hasn't run) — hide the section
+  }
+  if (!posts.length) { hideGallery(); return; }
+
   const track = $('galleryTrack');
   // duplicate the list once so translateX(-50%) loops seamlessly
-  const doubled = GALLERY_IMAGES.concat(GALLERY_IMAGES);
-  doubled.forEach((src) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = '';
-    img.loading = 'lazy';
-    img.addEventListener('click', () => openLightbox(src));
-    track.appendChild(img);
+  const doubled = posts.concat(posts);
+  doubled.forEach((post) => {
+    const el = document.createElement(post.type === 'video' ? 'video' : 'img');
+    el.src = post.media;
+    el.alt = '';
+    if (post.type === 'video') {
+      if (post.poster) el.poster = post.poster;
+      el.muted = true; el.loop = true; el.playsInline = true; el.autoplay = true;
+    } else {
+      el.loading = 'lazy';
+    }
+    el.addEventListener('click', () => openLightbox(post.media, post.type));
+    track.appendChild(el);
   });
-  track.style.setProperty('--gallery-duration', Math.max(20, GALLERY_IMAGES.length * 6) + 's');
+  track.style.setProperty('--gallery-duration', Math.max(20, posts.length * 6) + 's');
   const pause = () => track.classList.add('paused');
   const resume = () => track.classList.remove('paused');
   track.addEventListener('mouseenter', pause);
