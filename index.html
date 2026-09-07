@@ -81,6 +81,14 @@
       </div>
     </div>
 
+    <div class="gallery-head">
+      <div class="section-kicker" data-i18n="galleryKicker"></div>
+      <div class="section-title" data-i18n="galleryTitle"></div>
+    </div>
+    <div class="gallery-wrap">
+      <div class="gallery-track" id="galleryTrack"></div>
+    </div>
+
     <section class="catalog-head" id="sec-catalog">
       <div class="section-kicker" data-i18n="navCatalog"></div>
       <div class="section-title" data-i18n="catalogTitle"></div>
@@ -104,6 +112,10 @@
           <div class="price-dl-title" data-i18n="priceCta"></div>
           <div class="price-dl-sub">PDF · A4</div>
         </div>
+      </div>
+      <div class="price-note">
+        <span data-i18n="priceShortNote"></span>
+        <span class="price-note-link" id="priceManagerLink" data-i18n="priceManagerLink"></span>
       </div>
     </section>
 
@@ -188,6 +200,11 @@
     </div>
 
   </main>
+
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-close" id="lightboxClose">×</div>
+  </div>
 
   <div class="sheet-overlay" id="sheetOverlay">
     <div class="sheet-card" id="sheetCard">
